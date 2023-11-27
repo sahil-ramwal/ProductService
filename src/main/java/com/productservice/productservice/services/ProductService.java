@@ -1,6 +1,5 @@
 package com.productservice.productservice.services;
 
-import com.productservice.productservice.dtos.FakeStoreProductDto;
 import com.productservice.productservice.dtos.GenericProductDto;
 import com.productservice.productservice.exceptions.ProductNotFoundException;
 
@@ -14,7 +13,7 @@ public interface ProductService {
 
     GenericProductDto createProduct(GenericProductDto genericProductDto);
 
-    void updateproductById();
+    GenericProductDto updateproductById(Long id,GenericProductDto genericProductDto);
 }
 
 
