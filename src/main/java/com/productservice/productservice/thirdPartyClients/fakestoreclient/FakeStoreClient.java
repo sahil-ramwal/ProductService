@@ -41,6 +41,7 @@ public class FakeStoreClient {
         //convert fakestore to genericdto
         if (null == responseEntity.getBody()) {
             throw new ProductNotFoundException("product with id " + id + " not found");
+           // return null;
         }
         return responseEntity.getBody();
     }
