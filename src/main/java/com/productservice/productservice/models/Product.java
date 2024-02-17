@@ -1,5 +1,6 @@
 package com.productservice.productservice.models;
 
+import com.productservice.productservice.dtos.GenericProductDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,15 @@ public class Product extends BaseModel {
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
     private Category category;
+    public GenericProductDto from(Product product){
+        GenericProductDto genericProductDto=new GenericProductDto();
+        genericProductDto.setTitle(product.getTitle());
+        genericProductDto.setCategory(product.getCategory().getName());
+        genericProductDto.setImage(product.getImage());
+        genericProductDto.setDescription(product.getDescription());
+        //  genericProductDto.setPrice(product.getPrice().getValue());
+        return genericProductDto;
+    }
 
 
 }

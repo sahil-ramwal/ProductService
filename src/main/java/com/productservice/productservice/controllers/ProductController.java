@@ -3,7 +3,9 @@ package com.productservice.productservice.controllers;
 import com.productservice.productservice.dtos.GenericProductDto;
 import com.productservice.productservice.exceptions.ProductNotFoundException;
 import com.productservice.productservice.services.ProductService;
+import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,14 +16,14 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService)  {
         this.productService = productService;
     }
 
 
     @GetMapping("{id}")
-    public GenericProductDto getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
-        return productService.getProductById(id);
+    public GenericProductDto getProductById(@RequestHeader(HttpHeaders.AUTHORIZATION) String authToken,@PathVariable("id") Long id) throws ProductNotFoundException {
+        return productService.getProductById(id,authToken);
 
     }
 

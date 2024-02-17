@@ -35,7 +35,7 @@ public class FakeStoreClient {
     }
 
 
-    public FakeStoreProductDto getProductById(Long id) throws ProductNotFoundException {
+    public FakeStoreProductDto getProductById(Long id,String authToken) throws ProductNotFoundException {
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductDto> responseEntity = restTemplate.getForEntity(specificProductUrl, FakeStoreProductDto.class, id);
         //convert fakestore to genericdto
